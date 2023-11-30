@@ -20,18 +20,27 @@ screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Graph Visualization")
 
 # Function to convert graph coordinates to screen coordinates
+
+
 def convert_coordinates(pos):
     return pos[0] * 20 + 20, pos[1] * 20 + 20  # Adjusted scaling factor
 
 # Draw the nodes
+
+
 def draw_nodes():
     for node in loaded_G.nodes:
-        pygame.draw.circle(screen, (255, 255, 255), convert_coordinates(node), 2)  # Adjusted circle radius
+        pygame.draw.circle(screen, (255, 255, 255), convert_coordinates(
+            node), 2)  # Adjusted circle radius
 
 # Draw the path
+
+
 def draw_path(path):
     for i in range(len(path) - 1):
-        pygame.draw.line(screen, (0, 255, 0), convert_coordinates(path[i]), convert_coordinates(path[i + 1]), 3)
+        pygame.draw.line(screen, (0, 255, 0), convert_coordinates(
+            path[i]), convert_coordinates(path[i + 1]), 3)
+
 
 # Main loop
 running = True
@@ -71,15 +80,15 @@ while running:
     if start == end:
         # Choose a new random endpoint
         new_end = random.choice(list(loaded_G.nodes))
-        
+
         # Set the new endpoint as the endpoint
         end = new_end
-        
+
         # Compute the new path
         path = nx.shortest_path(loaded_G, source=start, target=end)
-        
+
         current_position = 0
-        
+
     # Move the blue ball along the path
     if path:
         start = path[current_position]
