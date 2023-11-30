@@ -20,4 +20,4 @@ requirements:
 	python -m pip freeze > requirements.txt
 
 run: 
-	$(PYTHON) -m 'snake game.py'
+	$(PYTHON) 'snake game.py'
